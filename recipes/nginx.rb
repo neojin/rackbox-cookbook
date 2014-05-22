@@ -7,6 +7,8 @@
 
 include_recipe "nginx::source"
 
-file "etc/nginx/sites-enabled/000-default" do
+file "/etc/nginx/sites-enabled/000-default" do
+  owner "root"
+  group "root"
   action :delete
 end
