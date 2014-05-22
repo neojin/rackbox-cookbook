@@ -6,3 +6,7 @@
 #
 
 include_recipe "nginx::source"
+
+file "etc/nginx/sites-enabled/000-default" do
+  action :delete
+end
