@@ -27,7 +27,7 @@ end.join("\n")
 file "#{node[:rbenv][:root]}/vars" do
   owner "rbenv"
   group "rbenv"
-  mode "0744"
+  mode "0644"
   action :create
   content vars_content
 end
