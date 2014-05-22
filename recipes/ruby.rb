@@ -7,6 +7,7 @@
 
 include_recipe "rbenv::default"
 include_recipe "rbenv::ruby_build"
+include_recipe "rbenv::rbenv_vars"
 
 node["rackbox"]["ruby"]["versions"].each do |rb_version|
 
@@ -17,4 +18,16 @@ node["rackbox"]["ruby"]["versions"].each do |rb_version|
     ruby_version rb_version
   end
 
+end
+
+vars_content = ["rackbox"]["rbenv_vars"].map do |key, val|
+  "#{key}=#{val}"
+end
+
+file "#{node[:rbenv][:root]}/vars" do
+  owner "rbenv"
+  group "rbenv"
+  mode "0744"
+  action :create
+  content vars_content
 end
