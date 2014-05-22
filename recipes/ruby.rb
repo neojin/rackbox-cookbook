@@ -20,9 +20,9 @@ node["rackbox"]["ruby"]["versions"].each do |rb_version|
 
 end
 
-vars_content = ["rackbox"]["rbenv_vars"].map do |key, val|
+vars_content = node["rackbox"]["rbenv_vars"].map do |key, val|
   "#{key}=#{val}"
-end
+end.join("\n")
 
 file "#{node[:rbenv][:root]}/vars" do
   owner "rbenv"
